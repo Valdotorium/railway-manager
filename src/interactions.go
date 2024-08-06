@@ -18,19 +18,29 @@ func GetTouches()*Touch{
 	touches := touch.GetTouchIDs()
 	for i := range touches{
 		touchposx, touchposy := ebiten.TouchPosition(touches[i])
-		return &Touch{
-			position :  Vector2i{x:touchposx, y:touchposy},
-            release : touch.IsTouchJustReleased(touches[i])}
+		if touch.IsTouchJustPressed(touches[i]){
+			return &Touch{
+				position :  Vector2i{x:touchposx, y:touchposy},
+				release : touch.IsTouchJustReleased(touches[i])}
+		}
+
 	}
 	return nil
 }
 
 func UpdateMouse(g *Game)*Game{
-	
-    if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) {
+	touched := GetTouches()
+    if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) || touched != nil {
         g.Mouse.isDown = true
-    }
+    } else {
+		g.Mouse.isDown = false
+	}
 	mouseposx, mouseposy := ebiten.CursorPosition()
-	g.Mouse.position = Vector2i{x:mouseposx, y:mouseposy}
+	if touched != nil{
+		g.Mouse.position = touched.position
+	} else {
+		g.Mouse.position = Vector2i{x:mouseposx, y:mouseposy}
+	}
+
     return g
 }

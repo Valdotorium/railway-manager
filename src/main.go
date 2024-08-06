@@ -6,6 +6,7 @@ import (
 	"log"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"strconv"
 )
 
 //fetching the paths of the games images from constants.go
@@ -34,7 +35,7 @@ func (g *Game) Update() error {
 
 func (g *Game) Draw(screen *ebiten.Image) {
 	screen.Fill(color.RGBA{100,120,180,255})
-	ebitenutil.DebugPrint(screen, "Ebitengine Program")
+	ebitenutil.DebugPrint(screen, strconv.FormatBool(g.Mouse.isDown) + " "+strconv.FormatInt(int64(g.Mouse.position.x), 10) + " "+strconv.FormatInt(int64(g.Mouse.position.y), 10) )
 	
 }
 

@@ -2,7 +2,6 @@
 #this file build the go executable, reloads the assets and puts them into the build folder
 cd src
 echo " Running and building mac executable..."
-#ls 
 go build .
 cd ..
 echo " 1/4 Go compiled successfully..."
