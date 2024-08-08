@@ -1,8 +1,8 @@
 package main
 
-import(
-    "github.com/hajimehoshi/ebiten/v2"
+import (
 	"github.com/Valdotorium/gobird/pkg/touch"
+	"github.com/hajimehoshi/ebiten/v2"
 )
 type Touch struct{
 	position Vector2i
