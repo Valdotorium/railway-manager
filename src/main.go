@@ -27,20 +27,18 @@ func NewGame() *Game {
     }
 }
 func (g *Game) Update() error {
-	//detecting jumping state
+	//detecting mouse clicks, touch and getting the cursor position
 	g = UpdateMouse(g)
 	return nil
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
-
+	//clearing the screen
 	screen.Fill(color.RGBA{100,120,180,255})
 	if activateDebugOverlay {
 		debugOverlay(screen, g)
 	}
 
-
-	 
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {

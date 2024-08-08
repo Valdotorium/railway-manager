@@ -15,4 +15,5 @@ var WindowWidth int = 720
 var WindowHeight int = 480
 
 //settings
+//debugging texts / information on screen
 var activateDebugOverlay bool = true
