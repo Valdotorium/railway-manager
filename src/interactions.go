@@ -7,6 +7,7 @@ import (
 type Touch struct{
 	position Vector2i
 	release bool
+	press bool
 }
 
 type Mouse struct {
@@ -19,12 +20,11 @@ func GetTouches()*Touch{
 	touches := touch.GetTouchIDs()
 	for i := range touches{
 		touchposx, touchposy := ebiten.TouchPosition(touches[i])
-		if touch.IsTouchJustPressed(touches[i]){
-			return &Touch{
-				position :  Vector2i{x:touchposx, y:touchposy},
-				release : touch.IsTouchJustReleased(touches[i])}
-		}
-
+		
+		return &Touch{
+			position :  Vector2i{x:touchposx, y:touchposy},
+			press : touch.IsTouchJustPressed(touches[i]),
+			release : touch.IsTouchJustReleased(touches[i])}
 	}
 	return nil
 }
