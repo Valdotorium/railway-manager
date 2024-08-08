@@ -15,6 +15,7 @@ type Mouse struct {
 }
 
 func GetTouches()*Touch{
+	touch.UpdateTouchIDs()
 	touches := touch.GetTouchIDs()
 	for i := range touches{
 		touchposx, touchposy := ebiten.TouchPosition(touches[i])

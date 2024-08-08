@@ -4,9 +4,7 @@ import (
 	"fmt"
 	"image/color"
 	"log"
-	"strconv"
-
-	"github.com/Valdotorium/gobird/pkg/touch"
+	
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
@@ -36,10 +34,15 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
+
 	screen.Fill(color.RGBA{100,120,180,255})
-	ls := len(touch.GetTouchIDs())
-	ebitenutil.DebugPrint(screen, strconv.FormatInt(int64(ls), 10))
-	
+	isTouched := GetTouches()
+	if isTouched!= nil && g.Mouse.isDown{
+        ebitenutil.DebugPrint(screen, "TOUCH")
+    } else {
+		ebitenutil.DebugPrint(screen, "NOT TOUCHED")
+	}
+	 
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
