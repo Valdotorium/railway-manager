@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"image/color"
 	"log"
-	
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
@@ -37,7 +37,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 	screen.Fill(color.RGBA{100,120,180,255})
 	isTouched := GetTouches()
-	if isTouched!= nil && g.Mouse.isDown{
+	if isTouched!= nil{
         ebitenutil.DebugPrint(screen, "TOUCH")
     } else {
 		ebitenutil.DebugPrint(screen, "NOT TOUCHED")
