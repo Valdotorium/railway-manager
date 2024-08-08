@@ -13,3 +13,6 @@ type Vector2 struct {
 //dimensions of the window
 var WindowWidth int = 720
 var WindowHeight int = 480
+
+//settings
+var activateDebugOverlay bool = true
