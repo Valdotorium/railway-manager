@@ -17,6 +17,8 @@ type Game struct{
 	IsDebuggingMode bool
 	Score int
 	Mouse Mouse
+	Stage string
+	Zoom float32
 }
 func NewGame() *Game {
 	return &Game{
@@ -24,6 +26,9 @@ func NewGame() *Game {
 		IsDebuggingMode: true,
 		Score: 0,
 		Mouse: Mouse{},
+		Stage: "game",
+        Zoom: 1.0,
+
     }
 }
 func (g *Game) Update() error {
@@ -35,20 +40,20 @@ func (g *Game) Update() error {
 func (g *Game) Draw(screen *ebiten.Image) {
 	//clearing the screen
 	screen.Fill(color.RGBA{100,120,180,255})
-	if activateDebugOverlay {
+	if DEBUG_OVERLAY {
 		debugOverlay(screen, g)
 	}
 
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return WindowWidth, WindowHeight
+	return WIN_WIDTH, WIN_HEIGHT
 }
 
 func main() {
 	fmt.Println("fetched image paths: ", imagePaths)
 	g := NewGame()
-	ebiten.SetWindowSize(WindowWidth, WindowHeight)
+	ebiten.SetWindowSize(WIN_WIDTH, WIN_HEIGHT)
 	ebiten.SetWindowTitle("Hello, World!")
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeOnlyFullscreenEnabled)
 	if err := ebiten.RunGame(g); err != nil {

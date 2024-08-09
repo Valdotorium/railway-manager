@@ -11,9 +11,13 @@ type Vector2 struct {
 	y float64
 }
 //dimensions of the window
-var WindowWidth int = 720
-var WindowHeight int = 480
-
+var WIN_WIDTH int = 720
+var WIN_HEIGHT int = 480
+//size of one tile with zoom = 1
+var TILE_SIZE int = 32
+//limits of the zoom variable
+var MIN_ZOOM float64 = 0.5
+var MAX_ZOOM float64 = 2.5
 //settings
 //debugging texts / information on screen
-var activateDebugOverlay bool = true
+var DEBUG_OVERLAY bool = true
