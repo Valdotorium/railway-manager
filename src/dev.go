@@ -17,5 +17,7 @@ func debugOverlay(screen *ebiten.Image, g *Game) {
 	} 
 	//printing the current mouse information.
 	ebitenutil.DebugPrintAt(screen, strconv.FormatBool(g.Mouse.isDown) + " "+strconv.FormatInt(int64(g.Mouse.position.x), 10) + " "+strconv.FormatInt(int64(g.Mouse.position.y), 10), 0, 40 )
-
+	if g.Button.State != 0 {
+		ebitenutil.DebugPrintAt(screen, "Button is hovered or clicked!", 0, 80)
+	}
 }
