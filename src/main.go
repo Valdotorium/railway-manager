@@ -7,6 +7,7 @@ import (
 
 	"github.com/Valdotorium/gobird/pkg/button"
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/Valdotorium/gobird/pkg/touch"
 )
 
 //fetching the paths of the games images from constants.go
@@ -17,7 +18,7 @@ type Game struct{
 	Textures map[string]*ebiten.Image
 	IsDebuggingMode bool
 	Score int
-	Mouse Mouse
+	Mouse touch.Mouse
 	Stage string
 	Camera *Camera
 	Button button.Button
@@ -29,7 +30,7 @@ func NewGame() *Game {
         Textures: LoadImages(imagePaths),
 		IsDebuggingMode: true,
 		Score: 0,
-		Mouse: Mouse{},
+		Mouse: touch.Mouse{},
 		Stage: "menu",
         Camera: NewCamera(),
 		TileSize: 32,
@@ -58,7 +59,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	if g.Stage == "game"{
 		g.drawTilemap(screen)
 	} else if g.Stage == "menu" {
-		g.Button.Update(screen)
+		g.Button.Update(screen, &g.Mouse)
 		g.UpdateMenu(screen)
 	}
 	if DEBUG_OVERLAY {

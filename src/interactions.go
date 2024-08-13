@@ -26,17 +26,17 @@ func UpdateMouse(g *Game)*Game{
 	touched := GetTouches()
 	//touches or left mouse button presses set this to true
     if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) || touched != nil {
-        g.Mouse.isDown = true
+        g.Mouse.IsDown = true
     } else {
-		g.Mouse.isDown = false
+		g.Mouse.IsDown = false
 	}
 	mouseposx, mouseposy := ebiten.CursorPosition()
 	if touched != nil{
-		g.Mouse.xPosition = touched.XPosition
-		g.Mouse.yPosition = touched.YPosition
+		g.Mouse.XPosition = touched.XPosition
+		g.Mouse.YPosition = touched.YPosition
 	} else {
-		g.Mouse.xPosition = mouseposx
-        g.Mouse.yPosition = mouseposy 
+		g.Mouse.XPosition = mouseposx
+        g.Mouse.YPosition = mouseposy 
 	}
 
     return g
