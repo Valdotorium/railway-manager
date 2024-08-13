@@ -22,7 +22,7 @@ func GetTouches()*touch.Touch{
 	return nil
 }
 
-func UpdateMouse(g *Game)*Game{
+func UpdateMouse(g *Game){
 	touched := GetTouches()
 	//touches or left mouse button presses set this to true
     if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) || touched != nil {
@@ -39,5 +39,34 @@ func UpdateMouse(g *Game)*Game{
         g.Mouse.YPosition = mouseposy 
 	}
 
-    return g
+}
+
+func (g *Game) MoveCamera() {
+	//simple WASD movement
+	if ebiten.IsKeyPressed(ebiten.KeyW) {
+        g.Camera.position.y += 10
+    }
+    if ebiten.IsKeyPressed(ebiten.KeyS) {
+        g.Camera.position.y -= 10
+    }
+    if ebiten.IsKeyPressed(ebiten.KeyA) {
+        g.Camera.position.x += 10
+    }
+    if ebiten.IsKeyPressed(ebiten.KeyD) {
+        g.Camera.position.x -= 10
+    }
+    //zooming in and out
+    if ebiten.IsKeyPressed(ebiten.KeyQ) {
+        g.Camera.zoom += 0.02
+    }
+    if ebiten.IsKeyPressed(ebiten.KeyE) {
+        g.Camera.zoom -= 0.02
+	}
+	//clamping zoom to prevent zooming out too far
+	if g.Camera.zoom < MIN_ZOOM {
+        g.Camera.zoom = MIN_ZOOM
+    }
+    if g.Camera.zoom > MAX_ZOOM {
+        g.Camera.zoom = MAX_ZOOM
+    }
 }
