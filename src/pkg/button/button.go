@@ -67,7 +67,7 @@ func (b *Button) GetState(screen *ebiten.Image, mouse *touch.Mouse) (clickState,
     isHovered := mx >= b.XPos && mx < b.XPos+b.Width && my >= b.YPos && my < b.YPos+b.Height
 
     // Update the button color based on hover state
-    isClicked := isHovered && mouse.isDown
+    isClicked := isHovered && mouse.IsDown
 
 	return isClicked, isHovered
 }

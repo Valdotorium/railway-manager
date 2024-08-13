@@ -14,10 +14,10 @@ func GetTouches()*touch.Touch{
 		touchposx, touchposy := ebiten.TouchPosition(touches[i])
 		//if a touch is happening, the function returns the first touch in touches
 		return &touch.Touch{
-			xPosition : touchposx,
-			yPosition : touchposy,
-			press : touch.IsTouchJustPressed(touches[i]),
-			release : touch.IsTouchJustReleased(touches[i])}
+			XPosition : touchposx,
+			YPosition : touchposy,
+			Press : touch.IsTouchJustPressed(touches[i]),
+			Release : touch.IsTouchJustReleased(touches[i])}
 	}
 	return nil
 }
@@ -32,8 +32,8 @@ func UpdateMouse(g *Game)*Game{
 	}
 	mouseposx, mouseposy := ebiten.CursorPosition()
 	if touched != nil{
-		g.Mouse.xPosition = touched.xPosition
-		g.Mouse.yPosition = touched.yPosition
+		g.Mouse.xPosition = touched.XPosition
+		g.Mouse.yPosition = touched.YPosition
 	} else {
 		g.Mouse.xPosition = mouseposx
         g.Mouse.yPosition = mouseposy 

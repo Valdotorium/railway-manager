@@ -9,16 +9,16 @@ import (
 )
 
 type Touch struct{
-	xPosition int
-	yPosition int
-	release bool
-	press bool
+	XPosition int
+	YPosition int
+	Release bool
+	Press bool
 }
 
 type Mouse struct {
-	isDown bool
-	xPosition int
-	yPosition int
+	IsDown bool
+	XPosition int
+	YPosition int
 }
 
 var (
