@@ -8,6 +8,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2/text/v2"
 	"github.com/hajimehoshi/ebiten/v2/vector"
 	"github.com/hajimehoshi/ebiten/v2/examples/resources/fonts"
+	"github.com/Valdotorium/gobird/pkg/touch"
 )
 
 type Button struct {
@@ -59,20 +60,20 @@ func (b *Button) Init(){
 	b.PreRenderText()
 }
 
-func (b *Button) GetState(screen *ebiten.Image) (clickState, hoverState bool){
+func (b *Button) GetState(screen *ebiten.Image, mouse *touch.Mouse) (clickState, hoverState bool){
 	mx, my := ebiten.CursorPosition()
 
     // Check if the mouse is hovering over the button
     isHovered := mx >= b.XPos && mx < b.XPos+b.Width && my >= b.YPos && my < b.YPos+b.Height
 
     // Update the button color based on hover state
-    isClicked := isHovered && ebiten.IsMouseButtonPressed(ebiten.MouseButton0)
+    isClicked := isHovered && mouse.isDown
 
 	return isClicked, isHovered
 }
 
-func (b *Button) Update(screen *ebiten.Image){
-	var isClicked, isHovered bool = b.GetState(screen)
+func (b *Button) Update(screen *ebiten.Image, mouse *touch.Mouse){
+	var isClicked, isHovered bool = b.GetState(screen, mouse)
 	// Drawing the button background
 	if !isHovered{
 		vector.DrawFilledRect(screen,

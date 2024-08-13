@@ -4,26 +4,18 @@ import (
 	"github.com/Valdotorium/gobird/pkg/touch"
 	"github.com/hajimehoshi/ebiten/v2"
 )
-type Touch struct{
-	position Vector2i
-	release bool
-	press bool
-}
 
-type Mouse struct {
-	isDown bool
-	position Vector2i
-}
 
-func GetTouches()*Touch{
+func GetTouches()*touch.Touch{
 	//TODO: #1 ,implement this to the template
 	touch.UpdateTouchIDs()
 	touches := touch.GetTouchIDs()
 	for i := range touches{
 		touchposx, touchposy := ebiten.TouchPosition(touches[i])
 		//if a touch is happening, the function returns the first touch in touches
-		return &Touch{
-			position :  Vector2i{x:touchposx, y:touchposy},
+		return &touch.Touch{
+			xPosition : touchposx,
+			yPosition : touchposy,
 			press : touch.IsTouchJustPressed(touches[i]),
 			release : touch.IsTouchJustReleased(touches[i])}
 	}
@@ -40,9 +32,11 @@ func UpdateMouse(g *Game)*Game{
 	}
 	mouseposx, mouseposy := ebiten.CursorPosition()
 	if touched != nil{
-		g.Mouse.position = touched.position
+		g.Mouse.xPosition = touched.xPosition
+		g.Mouse.yPosition = touched.yPosition
 	} else {
-		g.Mouse.position = Vector2i{x:mouseposx, y:mouseposy}
+		g.Mouse.xPosition = mouseposx
+        g.Mouse.yPosition = mouseposy 
 	}
 
     return g

@@ -8,6 +8,19 @@ import (
 	
 )
 
+type Touch struct{
+	xPosition int
+	yPosition int
+	release bool
+	press bool
+}
+
+type Mouse struct {
+	isDown bool
+	xPosition int
+	yPosition int
+}
+
 var (
 	allTouchIDs          []ebiten.TouchID
 	currentTouchIDs      map[ebiten.TouchID]bool
