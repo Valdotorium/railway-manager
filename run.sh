@@ -7,7 +7,7 @@ cd ..
 echo " 1/4 Go compiled successfully..."
 #reload assets
 cd build
-rm assets/*
+rm assets/* 
 rmdir assets
 rm *
 echo " 2/4 Removed old assets..."
@@ -19,5 +19,6 @@ echo " 3/4 Copied assets..."
 chmod +x gobird
 #run file
 echo " 4/4 Finished building"
+echo "Running executable..."
 ./gobird
 echo "Stopped executing"

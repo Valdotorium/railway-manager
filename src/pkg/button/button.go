@@ -29,6 +29,7 @@ type Button struct {
 	//the current state of the button (pressed 2, released 0, hovered 1)
 	State int
 }
+
 func (b *Button) PreRenderText(){
 	var textImage *ebiten.Image= ebiten.NewImage(b.Width, b.Height)
 	text.Draw(textImage, b.Text, &b.textFace, &b.options)
@@ -38,6 +39,7 @@ func (b *Button) PreRenderText(){
 	b.textImageOptions = op
 	b.textImage = textImage
 }
+
 func (b *Button) Init(){
 	//initializes the texts draw options and text face, will panic if not run
 	s, err := text.NewGoTextFaceSource(bytes.NewReader(fonts.MPlus1pRegular_ttf))
@@ -98,6 +100,4 @@ func (b *Button) Update(screen *ebiten.Image){
 	} else {
 		b.State = 0
 	}
-
-
 }

@@ -16,8 +16,9 @@ func debugOverlay(screen *ebiten.Image, g *Game) {
 		ebitenutil.DebugPrint(screen, "NOT TOUCHED")
 	} 
 	//printing the current mouse information.
-	ebitenutil.DebugPrintAt(screen, strconv.FormatBool(g.Mouse.isDown) + " "+strconv.FormatInt(int64(g.Mouse.position.x), 10) + " "+strconv.FormatInt(int64(g.Mouse.position.y), 10), 0, 40 )
-	if g.Button.State != 0 {
-		ebitenutil.DebugPrintAt(screen, "Button is hovered or clicked!", 0, 80)
-	}
+	ebitenutil.DebugPrintAt(screen, strconv.FormatBool(g.Mouse.isDown) + " "+strconv.FormatInt(int64(g.Mouse.position.x), 10) + " "+strconv.FormatInt(int64(g.Mouse.position.y), 10), 0, 20 )
+	//printing the current zoom level.
+	ebitenutil.DebugPrintAt(screen, "ZOOM: "+strconv.FormatFloat(g.Camera.zoom, 'f', 2, 64), 0, 40 )
+    //printing the current stage.
+    ebitenutil.DebugPrintAt(screen, "STAGE: "+g.Stage, 0, 60 )
 }
