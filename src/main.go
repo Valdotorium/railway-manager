@@ -37,8 +37,8 @@ func NewGame() *Game {
 		Button: button.Button{
 			XPos: 100,
 			YPos: 100,
-			Width: 70,
-			Height: 16,
+			Width: 90,
+			Height: 24,
 			Text: "Start Game",
 			TextColor: color.RGBA{200,200,200,255}, 
 			ButtonColor: color.RGBA{20,20,20,255}, 
