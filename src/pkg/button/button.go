@@ -61,10 +61,8 @@ func (b *Button) Init(){
 }
 
 func (b *Button) GetState(screen *ebiten.Image, mouse *touch.Mouse) (clickState, hoverState bool){
-	mx, my := ebiten.CursorPosition()
-
     // Check if the mouse is hovering over the button
-    isHovered := mx >= b.XPos && mx < b.XPos+b.Width && my >= b.YPos && my < b.YPos+b.Height
+    isHovered := mouse.XPosition >= b.XPos && mouse.XPosition < b.XPos+b.Width && mouse.YPosition >= b.YPos && mouse.YPosition < b.YPos+b.Height
 
     // Update the button color based on hover state
     isClicked := isHovered && mouse.IsDown
