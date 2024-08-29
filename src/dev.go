@@ -21,4 +21,8 @@ func debugOverlay(screen *ebiten.Image, g *Game) {
 	ebitenutil.DebugPrintAt(screen, "ZOOM: "+strconv.FormatFloat(g.Camera.zoom, 'f', 2, 64), 0, 40 )
     //printing the current stage.
     ebitenutil.DebugPrintAt(screen, "STAGE: "+g.Stage, 0, 60 )
+	//printing the current date.
+	ebitenutil.DebugPrintAt(screen, "DATE: "+strconv.FormatInt(int64(g.World.Date.Year), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Month), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Day, 10) + " " + strconv.FormatInt(int64(g.World.Date.Daytime.Hour), 10)+ ":" + strconv.FormatInt(int64(g.World.Date.Daytime.Minute), 10)+ ":" +strconv.FormatInt(int64(g.World.Date.Daytime.Second), 10)+ ":"), 
+	//ad 72 seconds
+	g.World.Date.Daytime.Add
 }

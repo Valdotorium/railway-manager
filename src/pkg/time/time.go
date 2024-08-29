@@ -14,7 +14,7 @@ type Date struct {
 }
 
 //now make functions that update time and Date
-func (t *time) addSeconds(s int) {
+func (t *Time) addSeconds(s int) {
     t.Second = t.Second + s
     if t.Second >= 60 {
         t.Second -= 60
@@ -29,11 +29,11 @@ func (t *time) addSeconds(s int) {
     }
 }
 
-func (t *time) addMinutes(m int) {
+func (t *Time) addMinutes(m int) {
 	t.addSeconds(m * 60)
 }
 
-func (t *time) addHours(h int) {
+func (t *Time) addHours(h int) {
     t.addMinutes(h * 60)
 }
 func getDaysInMonth(month int, year int) int{
