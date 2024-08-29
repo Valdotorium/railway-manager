@@ -15,14 +15,14 @@ type Date struct {
 
 //now make functions that update time and Date
 func (t *Time) AddSeconds(s int) {
-    t.Second = t.Second + s
-    if t.Second >= 60 {
+    t.Second += s
+    for t.Second >= 60 {
         t.Second -= 60
         t.Minute++
-        if t.Minute >= 60 {
+        for t.Minute >= 60 {
             t.Minute -= 60
             t.Hour++
-            if t.Hour >= 24 {
+            for t.Hour >= 24 {
                 t.Hour -= 24
             }
         }
@@ -55,10 +55,10 @@ func GetDaysInMonth(month int, year int) int{
 func (d *Date) AddDays(days int) {
 	//the same as addSeconds(), but with days, months etc..
 	d.Day += days
-	if d.Day > GetDaysInMonth(d.Month, d.Year) {
+	for d.Day > GetDaysInMonth(d.Month, d.Year) {
 		d.Day -= GetDaysInMonth(d.Month, d.Year)
         d.Month++
-		if d.Month > 12 {
+		for d.Month > 12 {
             d.Month -= 12
             d.Year++
         }
@@ -71,4 +71,11 @@ func (d *Date) AddMonths(months int) {
 
 func (d *Date) AddYears(years int) {
     d.AddMonths(years * 12)
+}
+
+//update days if needed
+func (d *Date) UpdateDays() {
+    if d.Daytime.Hour == 23 && d.Daytime.Minute == 59 && d.Daytime.Second == 59 {
+		d.AddDays(1)
+	}
 }

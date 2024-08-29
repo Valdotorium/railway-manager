@@ -24,5 +24,6 @@ func debugOverlay(screen *ebiten.Image, g *Game) {
 	//printing the current date.
 	ebitenutil.DebugPrintAt(screen, "DATE: "+strconv.FormatInt(int64(g.World.Date.Year), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Month), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Day), 10) + " " + strconv.FormatInt(int64(g.World.Date.Daytime.Hour), 10)+ ":" + strconv.FormatInt(int64(g.World.Date.Daytime.Minute), 10)+ ":" +strconv.FormatInt(int64(g.World.Date.Daytime.Second), 10)+ ":", 0, 80)
 	//ad 72 seconds
-	g.World.Date.Daytime.
+	g.World.Date.Daytime.AddSeconds(72)
+	g.World.UpdateDays()
 }
