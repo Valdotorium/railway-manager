@@ -62,6 +62,20 @@ func (g *Game) MoveCamera() {
     if ebiten.IsKeyPressed(ebiten.KeyE) {
         g.Camera.zoom -= 0.02
 	}
+	//using up and down arrow, adjust ReplayTime
+	if ebiten.IsKeyPressed(ebiten.KeyUp) {
+        g.World.ReplayTime += 0.05
+    }
+    if ebiten.IsKeyPressed(ebiten.KeyDown) {
+        g.World.ReplayTime -= 0.05
+    }
+	//clamping ReplayTime, so that it is not negative or too large
+	if g.World.ReplayTime < 0.2 {
+        g.World.ReplayTime = 0.2
+    }
+    if g.World.ReplayTime > 8 {
+        g.World.ReplayTime = 8
+    }
 	//clamping zoom to prevent zooming out too far
 	if g.Camera.zoom < MIN_ZOOM {
         g.Camera.zoom = MIN_ZOOM

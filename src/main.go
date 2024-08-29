@@ -49,7 +49,7 @@ func NewGame() *Game {
 func (g *Game) Update() error {
 	//detecting mouse clicks, touch and getting the cursor position
 	UpdateMouse(g)
-
+	g.World.SimulateWorld()
 	return nil
 }
 

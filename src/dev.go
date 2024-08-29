@@ -22,8 +22,11 @@ func debugOverlay(screen *ebiten.Image, g *Game) {
     //printing the current stage.
     ebitenutil.DebugPrintAt(screen, "STAGE: "+g.Stage, 0, 60 )
 	//printing the current date.
-	ebitenutil.DebugPrintAt(screen, "DATE: "+strconv.FormatInt(int64(g.World.Date.Year), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Month), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Day), 10) + " " + strconv.FormatInt(int64(g.World.Date.Daytime.Hour), 10)+ ":" + strconv.FormatInt(int64(g.World.Date.Daytime.Minute), 10)+ ":" +strconv.FormatInt(int64(g.World.Date.Daytime.Second), 10)+ ":", 0, 80)
-	//ad 72 seconds
-	g.World.Date.Daytime.AddSeconds(72)
-	g.World.UpdateDays()
+	ebitenutil.DebugPrintAt(screen, "DATE: "+strconv.FormatInt(int64(g.World.Date.Year), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Month), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Day), 10) + " " + strconv.FormatInt(int64(g.World.Date.Hour), 10)+ ":" + strconv.FormatInt(int64(g.World.Date.Minute), 10)+ ":" +strconv.FormatInt(int64(g.World.Date.Second), 10), 0, 80)
+	//printing the current replay time.
+	ebitenutil.DebugPrintAt(screen, "REPLAY TIME: "+strconv.FormatFloat(g.World.ReplayTime, 'f', 2, 64), 0, 100 )
+	//printing the current commute interest.
+	ebitenutil.DebugPrintAt(screen, "COMMUTE INTEREST: "+strconv.FormatFloat(g.World.CommuteInterest, 'f', 2, 64), 0, 120 )
+	//printing current FPS
+	ebitenutil.DebugPrintAt(screen, "FPS: "+strconv.FormatFloat(ebiten.ActualFPS(), 'f', 2, 64), 0, 140 )
 }
