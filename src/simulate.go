@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
+    "github.com/Valdotorium/gobird/pkg/time"
 )
 type Tile struct {
 	Type string
@@ -11,6 +12,7 @@ type Tile struct {
 type World struct {
 	Size int
 	Tiles [][]Tile
+    Date time.Date;
 }
 
 func generateWorld(Textures map[string]*ebiten.Image) World{
@@ -18,6 +20,7 @@ func generateWorld(Textures map[string]*ebiten.Image) World{
 	world := World{
         Size: 100,
         Tiles: make([][]Tile, 100),
+        Date: time.Date{Year: 2000, Month: 1, Day: 1, Daytime: time.Time{Hour: 7, Minute: 0, Second: 0}},
     }
     for i := 0; i < world.Size; i++ {
         world.Tiles[i] = make([]Tile, 100)

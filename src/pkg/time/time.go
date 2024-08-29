@@ -1,7 +1,7 @@
 package time
 
 
-type time struct {
+type Time struct {
 	Hour   int
 	Minute int
 	Second int
@@ -10,7 +10,7 @@ type Date struct {
 	Year  int
 	Month int
 	Day   int
-	Daytime time
+	Daytime Time
 }
 
 //now make functions that update time and Date
