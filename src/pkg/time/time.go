@@ -14,7 +14,7 @@ type Date struct {
 }
 
 //now make functions that update time and Date
-func (t *Time) addSeconds(s int) {
+func (t *Time) AddSeconds(s int) {
     t.Second = t.Second + s
     if t.Second >= 60 {
         t.Second -= 60
@@ -29,14 +29,14 @@ func (t *Time) addSeconds(s int) {
     }
 }
 
-func (t *Time) addMinutes(m int) {
-	t.addSeconds(m * 60)
+func (t *Time) AddMinutes(m int) {
+	t.AddSeconds(m * 60)
 }
 
-func (t *Time) addHours(h int) {
-    t.addMinutes(h * 60)
+func (t *Time) AddHours(h int) {
+    t.AddMinutes(h * 60)
 }
-func getDaysInMonth(month int, year int) int{
+func GetDaysInMonth(month int, year int) int{
     switch month {
     case 1, 3, 5, 7, 8, 10, 12:
         return 31
@@ -52,11 +52,11 @@ func getDaysInMonth(month int, year int) int{
         return 0
     }
 }
-func (d *Date) addDays(days int) {
+func (d *Date) AddDays(days int) {
 	//the same as addSeconds(), but with days, months etc..
 	d.Day += days
-	if d.Day > getDaysInMonth(d.Month, d.Year) {
-		d.Day -= getDaysInMonth(d.Month, d.Year)
+	if d.Day > GetDaysInMonth(d.Month, d.Year) {
+		d.Day -= GetDaysInMonth(d.Month, d.Year)
         d.Month++
 		if d.Month > 12 {
             d.Month -= 12
@@ -65,10 +65,10 @@ func (d *Date) addDays(days int) {
     }
 }
 
-func (d *Date) addMonths(months int) {
-    d.addDays(months * getDaysInMonth(d.Month, d.Year))
+func (d *Date) AddMonths(months int) {
+    d.AddDays(months * GetDaysInMonth(d.Month, d.Year))
 }
 
-func (d *Date) addYears(years int) {
-    d.addMonths(years * 12)
+func (d *Date) AddYears(years int) {
+    d.AddMonths(years * 12)
 }
