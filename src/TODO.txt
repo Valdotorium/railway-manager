@@ -1,2 +1,3 @@
 TODO:
--implement zooming and cam movement, including automatic image scaling
+-only draw surfaces visible
+-make drag mouse functionality
