@@ -19,6 +19,7 @@ type Game struct{
 	IsDebuggingMode bool
 	Score int
 	Mouse touch.Mouse
+	isMouseDragging bool
 	Stage string
 	Camera *Camera
 	Button button.Button

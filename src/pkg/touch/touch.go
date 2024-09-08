@@ -19,6 +19,7 @@ type Mouse struct {
 	IsDown bool
 	XPosition int
 	YPosition int
+	Ticks int //how many updates the mouse was down
 }
 
 var (

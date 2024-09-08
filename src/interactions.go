@@ -24,6 +24,7 @@ func GetTouches()*touch.Touch{
 
 func UpdateMouse(g *Game){
 	touched := GetTouches()
+    
 	//touches or left mouse button presses set this to true
     if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) || touched != nil {
         g.Mouse.IsDown = true
