@@ -39,6 +39,21 @@ func UpdateMouse(g *Game){
 		g.Mouse.XPosition = mouseposx
         g.Mouse.YPosition = mouseposy 
 	}
+    if g.Mouse.IsDown {
+        g.Mouse.Ticks++
+    } else {
+        g.Mouse.Ticks = 0
+    }
+    if g.Mouse.IsDown && g.Mouse.Ticks == 1{
+        g.MouseClickPosition = Vector2i{x: mouseposx,  y:mouseposy}
+    }
+
+    //dragging
+    if g.Mouse.Ticks >= 12 {
+        g.IsMouseDragging = true
+    } else {
+        g.IsMouseDragging = false
+    }
 
 }
 

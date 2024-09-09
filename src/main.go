@@ -15,16 +15,20 @@ var imagePaths []string = fetchGameImagePaths()
 
 type Game struct{
 	//go dict
+	//image related
 	Textures map[string]*ebiten.Image
-	IsDebuggingMode bool
-	Score int
+	//mouse related
 	Mouse touch.Mouse
-	isMouseDragging bool
+	IsMouseDragging bool
+	MouseClickPosition Vector2i
+	//other
 	Stage string
 	Camera *Camera
 	Button button.Button
 	World World
 	TileSize int
+	IsDebuggingMode bool
+	Score int
 }
 func NewGame() *Game {
 	return &Game{

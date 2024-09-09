@@ -25,8 +25,10 @@ func debugOverlay(screen *ebiten.Image, g *Game) {
 	ebitenutil.DebugPrintAt(screen, "DATE: "+strconv.FormatInt(int64(g.World.Date.Year), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Month), 10) + "-" + strconv.FormatInt(int64(g.World.Date.Day), 10) + " " + strconv.FormatInt(int64(g.World.Date.Hour), 10)+ ":" + strconv.FormatInt(int64(g.World.Date.Minute), 10)+ ":" +strconv.FormatInt(int64(g.World.Date.Second), 10), 0, 80)
 	//printing the current replay time.
 	ebitenutil.DebugPrintAt(screen, "REPLAY TIME: "+strconv.FormatFloat(g.World.ReplayTime, 'f', 2, 64), 0, 100 )
-	//printing the current commute interest.
-	ebitenutil.DebugPrintAt(screen, "COMMUTE INTEREST: "+strconv.FormatFloat(g.World.CommuteInterest, 'f', 2, 64), 0, 120 )
-	//printing current FPS
+
 	ebitenutil.DebugPrintAt(screen, "FPS: "+strconv.FormatFloat(ebiten.ActualFPS(), 'f', 2, 64), 0, 140 )
+	//print g.IsMouseDragging
+	ebitenutil.DebugPrintAt(screen, strconv.FormatBool(g.IsMouseDragging), 0, 160 )
+    //print g.MouseClickPosition
+    ebitenutil.DebugPrintAt(screen, "CLICK POSITION: "+strconv.FormatInt(int64(g.MouseClickPosition.x), 10) + " "+strconv.FormatInt(int64(g.MouseClickPosition.y), 10), 0, 180 )
 }
