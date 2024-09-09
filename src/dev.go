@@ -31,4 +31,6 @@ func debugOverlay(screen *ebiten.Image, g *Game) {
 	ebitenutil.DebugPrintAt(screen, strconv.FormatBool(g.IsMouseDragging), 0, 160 )
     //print g.MouseClickPosition
     ebitenutil.DebugPrintAt(screen, "CLICK POSITION: "+strconv.FormatInt(int64(g.MouseClickPosition.x), 10) + " "+strconv.FormatInt(int64(g.MouseClickPosition.y), 10), 0, 180 )
+	//print drawn tiles
+	ebitenutil.DebugPrintAt(screen, "Drawn Tiles: "+strconv.FormatInt(int64(g.TilesDrawn), 10), 0, 200 )
 }

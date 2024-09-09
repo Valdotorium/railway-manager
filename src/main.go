@@ -25,6 +25,7 @@ type Game struct{
 	Stage string
 	Camera *Camera
 	Button button.Button
+	TilesDrawn int
 	World World
 	TileSize int
 	IsDebuggingMode bool
@@ -49,6 +50,7 @@ func NewGame() *Game {
 			ButtonColor: color.RGBA{20,20,20,255}, 
 			HoveredColor: color.RGBA{50,50,50,255},
 		},
+		TilesDrawn: 0,
     }
 }
 func (g *Game) Update() error {

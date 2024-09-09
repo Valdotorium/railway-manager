@@ -23,20 +23,31 @@ func (g *Game) UpdateMenu(screen *ebiten.Image) {
 func (g *Game) drawTilemap(screen *ebiten.Image) {
 	//all tile images must be 32x32 pixels
 	op := &ebiten.DrawImageOptions{}
+	g.TilesDrawn = 0
 	op.GeoM.Scale(float64(g.Camera.zoom), float64(g.Camera.zoom))  //scaling the tilemap by camera zoom level
 
-	var x int = g.Camera.position.x
-	var y int = g.Camera.position.y
+	var x float64 = float64(g.Camera.position.x)
+	var y float64 = float64(g.Camera.position.y)
 	//offsetting the tilemap by camera position
 	var zoom float64 = float64(g.Camera.zoom)
 	op.GeoM.Translate(float64(x) * zoom, float64(y) * zoom)
 	
 	for i := 0; i < len(g.World.Tiles); i++{
 		list := g.World.Tiles[i]
-		
+		//only draw tiles within the screen boundaries
+
 		for j := 0; j < len(list); j++{
             tile := list[j]
-            screen.DrawImage(tile.Texture, op)
+
+			//only draw visible tiles
+			CurrentTileX := float64(j) * float64(g.TileSize) + x
+			CurrentTileY := float64(i) * float64(g.TileSize) + y
+			if -float64(g.TileSize) * zoom< CurrentTileX && CurrentTileX < CurrentTileX + float64(WIN_WIDTH){
+				if -float64(g.TileSize) * zoom < CurrentTileY && CurrentTileY < CurrentTileY + float64(WIN_HEIGHT){
+                    screen.DrawImage(tile.Texture, op)
+					g.TilesDrawn++
+                }
+			}
 			op.GeoM.Translate(float64(g.TileSize) * zoom,0)
         }
 		op.GeoM.Translate(-float64(g.TileSize * g.World.Size) * zoom,float64(g.TileSize) * zoom)

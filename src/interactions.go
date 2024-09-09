@@ -24,6 +24,10 @@ func GetTouches()*touch.Touch{
 
 func UpdateMouse(g *Game){
 	touched := GetTouches()
+
+    //set oldx and y to x and y pos before update
+    g.Mouse.OldXPosition = g.Mouse.XPosition
+    g.Mouse.OldYPosition = g.Mouse.YPosition
     
 	//touches or left mouse button presses set this to true
     if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) || touched != nil {
@@ -58,6 +62,13 @@ func UpdateMouse(g *Game){
 }
 
 func (g *Game) MoveCamera() {
+
+    //dragging to move the map, by changing the cameras position by the movement of the mouse in the last frame
+    if g.IsMouseDragging {
+        g.Camera.position.x -= int(float64(g.Mouse.OldXPosition - g.Mouse.XPosition) * g.Camera.zoom)
+        g.Camera.position.y -= int(float64(g.Mouse.OldYPosition - g.Mouse.YPosition) * g.Camera.zoom)
+    }
+    //clamping camera position to prevent it from going off the screen
 	//simple WASD movement
 	if ebiten.IsKeyPressed(ebiten.KeyW) {
         g.Camera.position.y += 10
