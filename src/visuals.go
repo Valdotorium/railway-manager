@@ -42,8 +42,9 @@ func (g *Game) drawTilemap(screen *ebiten.Image) {
 			//only draw visible tiles
 			CurrentTileX := float64(j) * float64(g.TileSize) + x
 			CurrentTileY := float64(i) * float64(g.TileSize) + y
-			if -float64(g.TileSize) * zoom< CurrentTileX && CurrentTileX < CurrentTileX + float64(WIN_WIDTH){
-				if -float64(g.TileSize) * zoom < CurrentTileY && CurrentTileY < CurrentTileY + float64(WIN_HEIGHT){
+			//TODO #2
+			if -float64(g.TileSize) * zoom< CurrentTileX && CurrentTileX < CurrentTileX + float64(WIN_WIDTH) / zoom{
+				if -float64(g.TileSize) * zoom < CurrentTileY && CurrentTileY < CurrentTileY + float64(WIN_HEIGHT) / zoom{
                     screen.DrawImage(tile.Texture, op)
 					g.TilesDrawn++
                 }
