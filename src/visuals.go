@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/hajimehoshi/ebiten/v2"
+	"fmt"
 )
 
 type Camera struct{
@@ -40,11 +41,12 @@ func (g *Game) drawTilemap(screen *ebiten.Image) {
             tile := list[j]
 
 			//only draw visible tiles
-			CurrentTileX := float64(j) * float64(g.TileSize) + x
-			CurrentTileY := float64(i) * float64(g.TileSize) + y
+			CurrentTileX := (float64(j) * float64(g.TileSize) + x) * zoom
+			CurrentTileY := (float64(i) * float64(g.TileSize) + y) * zoom 
 			//TODO #2
-			if -float64(g.TileSize) * zoom< CurrentTileX && CurrentTileX < CurrentTileX + float64(WIN_WIDTH) / zoom{
-				if -float64(g.TileSize) * zoom < CurrentTileY && CurrentTileY < CurrentTileY + float64(WIN_HEIGHT) / zoom{
+			if -float64(g.TileSize) * zoom< CurrentTileX && CurrentTileX < float64(WIN_WIDTH){
+				fmt.Println(CurrentTileX , CurrentTileX + float64(WIN_WIDTH) * zoom)
+				if -float64(g.TileSize) * zoom < CurrentTileY && CurrentTileY < float64(WIN_HEIGHT){
                     screen.DrawImage(tile.Texture, op)
 					g.TilesDrawn++
                 }
