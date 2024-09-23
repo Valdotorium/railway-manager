@@ -44,14 +44,13 @@ func UpdateMouse(g *Game){
         g.Mouse.YPosition = mouseposy 
 	}
     if g.Mouse.IsDown && g.Mouse.Ticks == 1{
-        g.MouseClickPosition = Vector2i{x: mouseposx,  y:mouseposy}
+        g.MouseClickPosition = Vector2i{x: g.Mouse.XPosition,  y:g.Mouse.YPosition}
     }
     if g.Mouse.IsDown {
         g.Mouse.Ticks++
     } else {
         g.Mouse.Ticks = 0
     }
-
 
     //dragging
     if g.Mouse.Ticks >= 12 {
