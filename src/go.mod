@@ -6,8 +6,8 @@ require github.com/hajimehoshi/ebiten/v2 v2.7.2
 
 require (
 	github.com/go-text/typesetting v0.1.1-0.20240325125605-c7936fe59984 // indirect
-	golang.org/x/image v0.15.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/image v0.18.0 // indirect
+	golang.org/x/text v0.16.0 // indirect
 )
 
 require (
